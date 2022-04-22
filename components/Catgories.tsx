@@ -58,6 +58,24 @@ const Catgories = () => {
           )}
         </div>
       )}
+      <div className="mt-8 flex items-center justify-center gap-4 py-8">
+        {pageIndex > 1 && (
+          <button
+            className="rounded-full bg-zinc-800 py-2 px-4 font-bold text-zinc-200 transition-all duration-300 hover:scale-105 active:scale-90 dark:bg-zinc-200 dark:text-zinc-800"
+            onClick={() => setPageIndex(pageIndex - 1)}
+          >
+            Previous
+          </button>
+        )}
+        {data && data.length === 9 && (
+          <button
+            className="rounded-full bg-zinc-800 py-2 px-4 font-bold text-zinc-200 transition-all duration-300 hover:scale-105 active:scale-90 dark:bg-zinc-200 dark:text-zinc-800"
+            onClick={() => setPageIndex(pageIndex + 1)}
+          >
+            Next
+          </button>
+        )}
+      </div>
       {!data && !error && <Loader />}
       {error && (
         <div className="mt-16 flex flex-row items-center justify-center gap-4 text-lg text-zinc-800 dark:text-zinc-200 md:text-xl">
