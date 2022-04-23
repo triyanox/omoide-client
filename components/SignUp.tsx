@@ -39,7 +39,7 @@ const Register = (props: Props) => {
         window.location.replace('/')
       }, 2000)
     } catch (ex: any) {
-      toast.error('Please try again later')
+      toast.error(ex.response.data)
     }
   }
 

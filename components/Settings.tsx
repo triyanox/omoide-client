@@ -29,16 +29,24 @@ const Settings = (props: Props) => {
     setIsOpen(true)
   }
   async function deleteUser() {
+    closeModal()
+    const deleteUser = userService.deleteUser()
     try {
-      closeModal()
-      await userService.deleteUser()
-      toast.success('User deleted successfully')
+      toast.promise(deleteUser, {
+        loading: 'Loading',
+        success: 'User deleted successfully',
+        error: 'Error',
+      })
+      await deleteUser
       localStorage.removeItem('token')
       setTimeout(() => {
         window.location.href = '/'
       }, 2000)
     } catch (ex: any) {
-      toast.error(ex.response.data)
+      if (ex.response && ex.response.status === 403) {
+        return toast.error('Forbidden request')
+      }
+      return toast.error(ex.response.data)
     }
   }
   const handleSubmit = async (e: Event | any) => {
@@ -51,18 +59,17 @@ const Settings = (props: Props) => {
     }
     const update = userService.updateUser(data)
     try {
+      toast.promise(update, {
+        loading: 'Loading',
+        success: 'Successfully updated, redirecting...',
+        error: 'Unable to update',
+      })
       await update
-      toast.success('User updated successfully')
       setTimeout(() => {
         window.location.replace('/')
       }, 2000)
     } catch (ex: any) {
-      console.log(ex.response.data)
-      if (ex.response.status === 403) {
-        toast.error(ex.response.data)
-      } else {
-        toast.error(ex.response.data.error)
-      }
+      toast.error('You can not update a demo account')
     }
   }
   return (

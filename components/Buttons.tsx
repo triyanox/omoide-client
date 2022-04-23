@@ -51,6 +51,18 @@ export const DeleteButton = (props: Props) => {
   )
 }
 
+export const LoginDemo = (props: Props) => {
+  return (
+    <button
+      type="submit"
+      onClick={props.onClick}
+      className="flex w-full flex-row items-center justify-center gap-2 rounded-xl border-2 border-zinc-800 px-20 py-3 text-xl text-zinc-800 transition-all duration-300 hover:scale-105 active:scale-95 dark:border-zinc-200 dark:text-zinc-200 md:w-2/3 lg:w-1/2"
+    >
+      {props.text}{' '}
+    </button>
+  )
+}
+
 type PropsDel = {
   children: ReactNode
   onClick: (e: Event | any) => void

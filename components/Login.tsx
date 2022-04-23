@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SubmitButton } from './Buttons'
+import { LoginDemo, SubmitButton } from './Buttons'
 import Input from './Input'
 import * as authService from '../services/authService'
 import toast, { Toaster } from 'react-hot-toast'
@@ -16,6 +16,28 @@ const LoginForm = (props: Props) => {
       ...account,
       [e.target.name]: e.target.value,
     })
+  }
+
+  async function handleDemo() {
+    const data = {
+      email: 'demo@omoide.com',
+      password: 'Omoide2022@',
+    }
+
+    const login = authService.userLogin(data)
+    try {
+      toast.promise(login, {
+        loading: 'Loading',
+        success: 'Successfully logged in , redirecting...',
+        error: 'Unable to login',
+      })
+      await login
+      setTimeout(() => {
+        window.location.replace('/')
+      }, 2000)
+    } catch {
+      toast.error('Unable to login')
+    }
   }
 
   const handleSubmit = async (e: Event | any) => {
@@ -38,7 +60,7 @@ const LoginForm = (props: Props) => {
         window.location.replace('/')
       }, 2000)
     } catch (ex: any) {
-      toast.error('Please try again later')
+      toast.error(ex.response.data)
     }
   }
   return (
@@ -71,6 +93,7 @@ const LoginForm = (props: Props) => {
           />
           <SubmitButton text="Log in" />
         </form>
+        <LoginDemo text="Demo Login" onClick={handleDemo} />
       </div>
       <Toaster position="bottom-right" reverseOrder={false} />
     </section>
