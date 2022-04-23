@@ -20,9 +20,7 @@ const Catgories = () => {
   }
   const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
-  const { data, error } = useSWR(endPoint, fetcher, {
-    refreshInterval: 1000,
-  })
+  const { data, error } = useSWR(endPoint, fetcher)
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 px-8 md:px-24 xl:px-12">

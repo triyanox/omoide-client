@@ -10,9 +10,7 @@ const endPoint = config.endpoint + '/v1/posts/allposts/reads'
 const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
 const MostPopular = () => {
-  const { data, error } = useSWR(endPoint, fetcher, {
-    refreshInterval: 1000,
-  })
+  const { data, error } = useSWR(endPoint, fetcher)
   return (
     <Fragment>
       <div className="items-cernter my-16 flex flex-col justify-start gap-4 px-8 md:px-24 xl:px-20">

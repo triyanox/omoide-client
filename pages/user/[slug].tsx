@@ -41,9 +41,7 @@ type UserProps = {
 }
 
 export default function User({ user }: { user: UserProps }) {
-  const { data, error } = useSWR(endPoint + '/user/' + user.link, fetcher, {
-    refreshInterval: 1000,
-  })
+  const { data, error } = useSWR(endPoint + '/user/' + user.link, fetcher)
 
   return (
     <Layout
