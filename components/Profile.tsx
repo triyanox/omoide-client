@@ -13,7 +13,9 @@ const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
 const Profile = () => {
   const { _id } = useUser()
-  const { data, error } = useSWR(endPoint + '/userid/' + _id, fetcher)
+  const { data, error } = useSWR(endPoint + '/userid/' + _id, fetcher, {
+    refreshInterval: 2000,
+  })
   return (
     <Fragment>
       <ProfileHeader />
