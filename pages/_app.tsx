@@ -5,9 +5,10 @@ import { UserContext } from '../components/UserContext'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import jwtDecode from 'jwt-decode'
+import { AnimatePresence, motion } from 'framer-motion'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
+function MyApp({ Component, pageProps,router }: AppProps) {
+  const NextRouter = useRouter()
 
   useEffect(() => {
     try {
@@ -30,14 +31,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         iat: decoded.iat,
         loggedIn: true,
       })
-      if (router.pathname === '/login' || router.pathname === '/signup') {
+      if (NextRouter.pathname === '/login' || NextRouter.pathname === '/signup') {
         window.location.replace('/')
       }
     } catch {
       if (
-        router.pathname !== '/login' &&
-        router.pathname !== '/' &&
-        router.pathname !== '/signup'
+        NextRouter.pathname !== '/login' &&
+        NextRouter.pathname !== '/' &&
+        NextRouter.pathname !== '/signup'
       ) {
         window.location.replace('/login')
       }
@@ -56,11 +57,27 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   return (
+    <AnimatePresence exitBeforeEnter>
+      <motion.div
+        key={router.route}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transformOrigin: '50% 50%' }}
+        exit={{ opacity: 0, transformOrigin: 'center' }}
+        transition={{
+          duration: 0.5,
+          damping: 300,
+          ease: 'easeInOut',
+          stiffness: 300,
+        }}
+      >
     <UserContext.Provider value={user}>
       <ThemeProvider attribute="class">
         <Component {...pageProps} />
       </ThemeProvider>
     </UserContext.Provider>
+    </motion.div>
+    </AnimatePresence>
+  
   )
 }
 
