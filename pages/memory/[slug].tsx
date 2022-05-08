@@ -90,15 +90,15 @@ export default function Post({ post }: { post: Post }) {
       {post ? (
         <section className="mt-28 flex w-full flex-col-reverse items-center justify-center gap-y-8 py-16 px-10 md:px-24 lg:flex-row xl:px-20">
           <div className="mx-8 flex w-full flex-col items-center justify-center gap-4 sm:mx-16 lg:mx-0">
-            <h1 className="to:text-zinc-200 mb-16 text-4xl font-bold text-zinc-900 dark:text-zinc-200">
+            <h1 className="to:text-zinc-50 mb-16 text-4xl font-bold text-zinc-900 dark:text-zinc-200">
               {post.title}
             </h1>
-            <div className="mx-8 w-full rounded-xl bg-zinc-200 px-8 py-12 dark:bg-zinc-800 md:w-2/3 lg:w-1/2">
+            <div className="mx-8 w-full rounded-xl bg-zinc-50 px-8 py-12 dark:bg-zinc-900 md:w-2/3 lg:w-1/2">
               <p className="dark:bg-text-200 mb-8 text-lg text-zinc-600 dark:text-zinc-400 md:text-xl lg:text-2xl">
                 {post.content}
               </p>
             </div>
-            <div className="mx-8 flex w-full items-center justify-between rounded-xl bg-zinc-200 px-8 py-8 text-lg dark:bg-zinc-800 md:w-2/3 md:text-xl lg:w-1/2">
+            <div className="mx-8 flex w-full items-center justify-between rounded-xl bg-zinc-50 px-8 py-8 text-lg dark:bg-zinc-900 md:w-2/3 md:text-xl lg:w-1/2">
               <div className="flex items-center justify-start gap-4">
                 <p className="text-cyan-500">{post.reads} reads</p>
                 <p className="text-fuchsia-600">{likes} likes</p>
@@ -107,7 +107,7 @@ export default function Post({ post }: { post: Post }) {
                 Category : {post.category}
               </p>
             </div>
-            <div className="mx-8 flex w-full items-center justify-between rounded-xl bg-zinc-200 px-8 py-8 text-lg dark:bg-zinc-800 md:w-2/3 md:text-xl lg:w-1/2">
+            <div className="mx-8 flex w-full items-center justify-between rounded-xl bg-zinc-50 px-8 py-8 text-lg dark:bg-zinc-900 md:w-2/3 md:text-xl lg:w-1/2">
               <Link
                 href={`/user/${user.link}`}
                 as={`/user/${user.link}`}
