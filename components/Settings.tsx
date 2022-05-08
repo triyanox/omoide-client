@@ -30,23 +30,18 @@ const Settings = (props: Props) => {
   }
   async function deleteUser() {
     closeModal()
-    const deleteUser = userService.deleteUser()
+    const deleted =  userService.deleteUser()
     try {
-      toast.promise(deleteUser, {
-        loading: 'Loading',
-        success: 'User deleted successfully',
-        error: 'Error',
-      })
-      await deleteUser
+      const res = await deleted
+      if (res.status === 200) {
+      toast.success('User deleted successfully')
       localStorage.removeItem('token')
       setTimeout(() => {
         window.location.href = '/'
       }, 2000)
+    }
     } catch (ex: any) {
-      if (ex.response && ex.response.status === 403) {
-        return toast.error('Forbidden request')
-      }
-      return toast.error(ex.response.data)
+      toast.error('User could not be deleted')
     }
   }
   const handleSubmit = async (e: Event | any) => {
