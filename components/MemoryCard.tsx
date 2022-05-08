@@ -35,6 +35,9 @@ const MemoryCard = (props: Props) => {
           scale: 0,
           opacity: 0,
         }}
+        whileTap={{
+          scale: 0.9,
+        }}
         transition={{
           duration: 0.4,
           dump: 0.8,
@@ -42,7 +45,7 @@ const MemoryCard = (props: Props) => {
           stiffness: 100,
           elapsed: 1,
         }}
-        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-200 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-800"
+        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-900"
       >
         <Link href={`/memory/${props.link}`} passHref>
           <div className="flex cursor-pointer flex-col gap-4">
@@ -108,6 +111,7 @@ export const MemoryCardWithDelete = (props: Props) => {
           scale: 0,
           opacity: 0,
         }}
+        whileTap={{ scale: 0.9 }}
         transition={{
           duration: 0.6,
           dump: 0.8,
@@ -115,7 +119,7 @@ export const MemoryCardWithDelete = (props: Props) => {
           stiffness: 100,
           elapsed: 1,
         }}
-        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-200 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-800"
+        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-900"
       >
         <Link href={`/memory/${props.link}`} passHref>
           <div className="flex cursor-pointer flex-col gap-4">
