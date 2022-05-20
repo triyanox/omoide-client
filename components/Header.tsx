@@ -21,7 +21,7 @@ function NavItem({ href, text }: NavItems) {
           isActive
             ? 'font-semibold text-zinc-900 dark:text-zinc-200'
             : 'font-normal text-black dark:text-white',
-          'inline-block rounded-lg p-1 transition-all hover:bg-gray-200 dark:hover:bg-zinc-800 sm:px-3 sm:py-2'
+          'inline-block rounded-lg p-1 transition-all hover:bg-gray-200 dark:hover:bg-zinc-800 md:px-3 md:py-2'
         )}
       >
         <span className="capsize">{text}</span>
@@ -54,7 +54,7 @@ function Header() {
         <div className="inline-flex w-full text-xl">
           <HomeLink href="/" text="Omoide" />
         </div>
-        <div className="flex w-full flex-row items-center justify-end gap-4">
+        <div className="flex w-full flex-row items-center justify-end gap-1 md:gap-4">
           {!loggedIn ? (
             <Fragment>
               <NavItem href="/signup" text="Sign Up" />
