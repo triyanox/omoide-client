@@ -5,7 +5,7 @@ import Layout from '../layout/Layout'
 
 const SearchPage: NextPage = () => {
   return (
-    <Layout title="Search" description="This is the Search page">
+    <Layout title="Search" description="Memory sharing platform">
       <Seacrh />
     </Layout>
   )
