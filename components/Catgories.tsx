@@ -33,7 +33,7 @@ const Catgories = () => {
         onChange={handleSelect}
       />
       {data && (
-        <div className="mb-4 mt-16 grid grid-cols-1 items-center justify-center gap-6 px-8 md:px-24 lg:grid-cols-2 xl:grid-cols-3 xl:px-20">
+        <div className="mb-4 mt-16 grid grid-cols-1 items-center justify-center gap-6 px-2 md:px-24 lg:grid-cols-2 xl:grid-cols-3 xl:px-20">
           {data.map(
             (memory: {
               id: React.Key | null | undefined
