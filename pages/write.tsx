@@ -3,7 +3,7 @@ import Layout from '../layout/Layout'
 import Write from '../components/Write'
 const WritePage: NextPage = () => {
   return (
-    <Layout title="Write" description="This is the Write page">
+    <Layout title="Write" description="Memory sharing platform">
       <Write />
     </Layout>
   )
