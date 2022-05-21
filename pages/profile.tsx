@@ -6,7 +6,7 @@ import { useUser } from '../components/UserContext'
 const ProfilePage: NextPage = () => {
   const { link } = useUser()
   return (
-    <Layout title="Profile" description="This is the Profile page">
+    <Layout title="Profile" description="Memory sharing platform">
       <Profile />
     </Layout>
   )
