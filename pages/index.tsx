@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const { loggedIn } = useUser()
   return (
     <Layout
-      title={loggedIn ? 'Welcome' : 'Home'}
+      title={loggedIn ? 'Welcome' : 'Omoide'}
       description="This is the home page"
     >
       {loggedIn ? <Feed /> : <Hero />}
