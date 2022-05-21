@@ -4,7 +4,7 @@ import Layout from '../layout/Layout'
 
 const Signup: NextPage = () => {
   return (
-    <Layout title="Omoide - Signup" description="This is the Signup page">
+    <Layout title="Omoide - Signup" description="Memory sharing platform">
       <Register />
     </Layout>
   )
