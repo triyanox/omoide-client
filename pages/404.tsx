@@ -3,7 +3,7 @@ import Layout from '../layout/Layout'
 import NothingToShow from '../components/NothingToShow'
 const Custom404: NextPage = () => {
   return (
-    <Layout title="404" description="404 page">
+    <Layout title="404" description="Memory sharing platform">
       <NothingToShow />
     </Layout>
   )
