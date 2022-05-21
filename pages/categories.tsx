@@ -4,7 +4,7 @@ import Layout from '../layout/Layout'
 
 const CategoriesPage: NextPage = () => {
   return (
-    <Layout title="Categories" description="This is the Categories page">
+    <Layout title="Categories" description="Memory sharing platform">
       <Catgories />
     </Layout>
   )
