@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <Layout
       title={loggedIn ? 'Welcome' : 'Omoide'}
-      description="This is the home page"
+      description="Memory sharing platform"
     >
       {loggedIn ? <Feed /> : <Hero />}
     </Layout>
