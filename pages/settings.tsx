@@ -4,7 +4,7 @@ import Settings from '../components/Settings'
 
 const SettingsPage: NextPage = () => {
   return (
-    <Layout title="Settings" description="This is the Settings page">
+    <Layout title="Settings" description="Memory sharing platform">
       <Settings />
     </Layout>
   )
