@@ -30,18 +30,16 @@ const Settings = (props: Props) => {
   }
   async function deleteUser() {
     closeModal()
-    const deleted =  userService.deleteUser()
+    const deleteUser = userService.deleteUser()
     try {
-      const res = await deleted
-      if (res.status === 200) {
-      toast.success('User deleted successfully')
+      await deleteUser
       localStorage.removeItem('token')
+      toast.success('Successfully deleted, redirecting...')
       setTimeout(() => {
-        window.location.href = '/'
+        window.location.replace('/')
       }, 2000)
-    }
     } catch (ex: any) {
-      toast.error('User could not be deleted')
+      toast.error(ex.response.data)
     }
   }
   const handleSubmit = async (e: Event | any) => {
@@ -64,7 +62,7 @@ const Settings = (props: Props) => {
         window.location.replace('/')
       }, 2000)
     } catch (ex: any) {
-      toast.error('You can not update a demo account')
+      toast.error(ex.response.data)
     }
   }
   return (
