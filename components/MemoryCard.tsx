@@ -35,17 +35,15 @@ const MemoryCard = (props: Props) => {
           scale: 0,
           opacity: 0,
         }}
-        whileTap={{
-          scale: 0.9,
-        }}
         transition={{
-          duration: 0.4,
+          duration: 0.2,
           dump: 0.8,
           ease: 'easeInOut',
           stiffness: 100,
           elapsed: 1,
         }}
-        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-900"
+        whileTap={{ scale: 0.8 }}
+        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-200 hover:scale-105 dark:bg-zinc-900"
       >
         <Link href={`/memory/${props.link}`} passHref>
           <div className="flex cursor-pointer flex-col gap-4">
