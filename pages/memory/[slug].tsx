@@ -98,8 +98,8 @@ export default function Post({ post }: { post: Post }) {
                 {post.content}
               </p>
             </div>
-            <div className="mx-8 flex w-full items-center justify-between rounded-xl bg-zinc-50 px-8 py-8 text-lg dark:bg-zinc-900 md:w-2/3 md:text-xl lg:w-1/2">
-              <div className="flex items-center justify-start gap-4">
+            <div className="mx-8 flex w-full items-start justify-between rounded-xl bg-zinc-50 px-8 py-8 text-lg dark:bg-zinc-900 md:w-2/3 md:items-center md:text-xl lg:w-1/2">
+              <div className="flex flex-col items-center justify-start gap-1 md:flex-row md:gap-4">
                 <p className="text-cyan-500">{post.reads} reads</p>
                 <p className="text-fuchsia-600">{likes} likes</p>
               </div>
@@ -114,14 +114,14 @@ export default function Post({ post }: { post: Post }) {
                 passHref
               >
                 <a className="text-zinc-600 dark:text-zinc-400">
-                  Written by : <span className="font-bold">{user.name}</span>
+                  Written by : <span className="underline">{user.name}</span>
                 </a>
               </Link>
               <div className="flex items-center justify-center gap-4">
                 {loggedIn && (
                   <button
                     onClick={handleLike}
-                    className="flex items-center justify-center gap-2 text-2xl text-red-600 dark:text-red-500"
+                    className="flex items-center justify-center gap-2 text-2xl text-red-600 transition-all duration-150 active:scale-90 dark:text-red-500"
                   >
                     <span>Like</span> <RiHeart2Fill />
                   </button>
