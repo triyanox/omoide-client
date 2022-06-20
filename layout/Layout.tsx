@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { useUser } from '../components/UserContext'
 
 type Props = {
   children: React.ReactNode
@@ -10,6 +11,7 @@ type Props = {
 }
 
 const Layout = (props: Props) => {
+  const { loggedIn } = useUser()
   return (
     <Fragment>
       <Head>
@@ -19,7 +21,7 @@ const Layout = (props: Props) => {
       </Head>
       <Header />
       {props.children}
-      <Footer />
+      {!loggedIn && <Footer />}
     </Fragment>
   )
 }
