@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { DeleteButtonWithIcon, EditButtonWithIcon } from './Buttons'
 import { MdDelete } from 'react-icons/md'
 import { FiEdit2 } from 'react-icons/fi'
 import { BsHeartFill } from 'react-icons/bs'
@@ -43,7 +42,7 @@ const MemoryCard = (props: Props) => {
           elapsed: 1,
         }}
         whileTap={{ scale: 0.8 }}
-        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-200 hover:scale-105 dark:bg-zinc-900"
+        className="relative flex h-full w-full flex-col justify-center rounded-[30px] bg-zinc-50 p-8 transition-all duration-200 hover:scale-105 dark:bg-zinc-900"
       >
         <Link href={`/memory/${props.link}`} passHref>
           <div className="flex cursor-pointer flex-col gap-4">
@@ -117,7 +116,7 @@ export const MemoryCardWithDelete = (props: Props) => {
           stiffness: 100,
           elapsed: 1,
         }}
-        className="relative flex h-full w-full flex-col justify-center rounded-[12px] bg-gray-50 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-900"
+        className="relative flex h-full w-full flex-col justify-center rounded-[30px] bg-zinc-50 p-8 transition-all duration-300 hover:scale-105 dark:bg-zinc-900"
       >
         <Link href={`/memory/${props.link}`} passHref>
           <div className="flex cursor-pointer flex-col gap-4">
@@ -137,13 +136,16 @@ export const MemoryCardWithDelete = (props: Props) => {
                   {props.likes} <BsHeartFill />
                 </p>
               </div>
-              <div className="flex items-center justify-end">
-                <EditButtonWithIcon onClick={handleEdit}>
-                  Edit <FiEdit2 />
-                </EditButtonWithIcon>
-                <DeleteButtonWithIcon onClick={handleDelete}>
-                  Delete <MdDelete />
-                </DeleteButtonWithIcon>
+              <div className="flex items-center justify-end gap-4">
+                <FiEdit2
+                  href={`/edit/${props.link}`}
+                  className="text-2xl"
+                  onClick={handleEdit}
+                />
+                <MdDelete
+                  className="text-2xl text-red-500"
+                  onClick={handleDelete}
+                />
               </div>
             </div>
             <Toaster position="bottom-right" reverseOrder={false} />
