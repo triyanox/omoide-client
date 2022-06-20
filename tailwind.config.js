@@ -8,17 +8,15 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    fontFamily: {
-      sans: ['Josefin Sans', ...defaultTheme.fontFamily.sans],
-    },
     extend: {
+      fontFamily: {
+        sans: ['Generator', ...defaultTheme.fontFamily.sans],
+      },
       gridTemplateRows: {
         10: 'repeat(10, minmax(0, 1fr))',
         layout: '200px minmax(900px, 1fr) 100px',
       },
-      fontFamily: {
-        sans: ['Fredoka', ...defaultTheme.fontFamily.sans],
-      },
+
       animation: {
         'gradient-x': 'gradient-x 3s ease infinite',
         'gradient-y': 'gradient-y 3s ease infinite',
