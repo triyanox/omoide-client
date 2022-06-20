@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react'
+import { IconButton } from './Buttons'
+import { WiMoonAltNew } from 'react-icons/wi'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-import { WiMoonFull } from 'react-icons/wi'
-
-const Toggle = () => {
+const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false)
   const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => setMounted(true), [])
-
   return (
-    <motion.div whileTap={{ scale: 0.7 }} transition={{ duration: 0.3 }}>
+    <motion.div
+      whileTap={{ scale: 0.7, rotate: -30, elevation: 10 }}
+      transition={{ duration: 0.3, damping: 10 }}
+    >
       {mounted && (
-        <button
-          aria-label="Light Theme"
-          onClick={() => {
-            setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-          }}
-          className="flex cursor-pointer items-center text-2xl text-zinc-900 transition-all duration-500 active:rotate-90 dark:text-zinc-200"
-        >
-          <WiMoonFull />
-        </button>
+        <IconButton
+          aria-label="Theme Toggle"
+          onclick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+          icon={
+            <WiMoonAltNew className="text-3xl text-white dark:text-black" />
+          }
+        />
       )}
     </motion.div>
   )
 }
 
-export default Toggle
+export default ThemeToggle
