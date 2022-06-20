@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { LoginDemo, SubmitButton } from './Buttons'
-import Input from './Input'
+import { BorderButton, SubmitButton } from './Buttons'
 import * as authService from '../services/authService'
 import toast, { Toaster } from 'react-hot-toast'
+import EmailInput from './inputs/Email'
+import PasswordInput from './inputs/Password'
 
 type Props = {}
 
@@ -11,12 +12,6 @@ const LoginForm = (props: Props) => {
     email: '',
     password: '',
   })
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAccount({
-      ...account,
-      [e.target.name]: e.target.value,
-    })
-  }
 
   async function handleDemo() {
     const data = {
@@ -66,34 +61,18 @@ const LoginForm = (props: Props) => {
   return (
     <section className="mt-4 flex h-screen w-full flex-col-reverse items-center justify-center gap-y-8 px-10 md:px-24 lg:flex-row xl:px-20">
       <div className="mx-8 flex w-full flex-col items-center justify-center gap-4 sm:mx-16 lg:mx-0">
-        <h1 className="to:text-zinc-200 mb-8 text-4xl text-zinc-900 dark:text-zinc-200">
+        <h1 className="mb-8 text-5xl font-bold text-zinc-900 dark:text-zinc-200">
           Log in
         </h1>
         <form
-          className="flex w-full flex-col items-center justify-center gap-8 py-4"
+          className="flex w-full flex-col items-center justify-center gap-4 py-4"
           onSubmit={handleSubmit}
         >
-          <Input
-            name="email"
-            id="email"
-            type="email"
-            placeholder="Email"
-            value={account.email}
-            onChange={handleChange}
-          />
-          <Input
-            name="password"
-            id="password"
-            type="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Your password should be at least 8 characters long and contain at least one number, one uppercase and one lowercase letter"
-            placeholder="Password"
-            value={account.password}
-            onChange={handleChange}
-          />
-          <SubmitButton text="Log in" />
+          <EmailInput form={account} setForm={setAccount} sm={true} />
+          <PasswordInput form={account} setForm={setAccount} sm={true} />
+          <SubmitButton text="Login" sm={true} />
         </form>
-        <LoginDemo text="Demo Login" onClick={handleDemo} />
+        <BorderButton text="Demo Login" onClick={handleDemo} sm={true} />
       </div>
       <Toaster position="bottom-right" reverseOrder={false} />
     </section>
