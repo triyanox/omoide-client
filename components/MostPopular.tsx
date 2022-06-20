@@ -18,7 +18,7 @@ const MostPopular = () => {
         <p className="text-md md:text-lg">Here are the most popular posts</p>
       </div>
       {data && (
-        <div className="mb-4 grid grid-cols-1 items-center justify-center gap-6 px-8 md:px-24 lg:grid-cols-2 xl:grid-cols-3 xl:px-20">
+        <div className="mb-20 grid grid-cols-1 items-center justify-center gap-6 px-8 md:px-24 lg:grid-cols-2 xl:grid-cols-3 xl:px-20">
           {data.map(
             (memory: {
               id: React.Key | null | undefined
@@ -44,7 +44,7 @@ const MostPopular = () => {
       )}
       {!data && !error && <Loader />}
       {error && (
-        <div className="flex flex-row items-center justify-center gap-4 text-lg text-zinc-800 dark:text-zinc-200 md:text-xl">
+        <div className="mb-8 flex flex-row items-center justify-center gap-4 text-lg text-zinc-800 dark:text-zinc-200 md:text-xl">
           Something went wrong ... <MdOutlineError />
         </div>
       )}
