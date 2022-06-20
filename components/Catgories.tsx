@@ -1,9 +1,8 @@
 import axios from 'axios'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { MdOutlineError } from 'react-icons/md'
 import useSWR from 'swr'
 import config from '../production/config.json'
-import { Button } from './Buttons'
 import { SelectCategory } from './Input'
 import Loader from './Loader'
 import MemoryCard from './MemoryCard'
@@ -18,7 +17,7 @@ const Catgories = () => {
     setCategory(e.target.value)
     setPageIndex(1)
   }
-  
+
   const fetcher = (url: string) => axios.get(url).then((res) => res.data)
 
   const { data, error } = useSWR(endPoint, fetcher)
@@ -61,7 +60,10 @@ const Catgories = () => {
         {pageIndex > 1 && (
           <button
             className="rounded-full bg-zinc-800 py-2 px-4 font-bold text-zinc-200 transition-all duration-300 hover:scale-105 active:scale-90 dark:bg-zinc-200 dark:text-zinc-800"
-            onClick={() => {setPageIndex(pageIndex - 1); window.scrollTo({ top: 0, behavior: 'smooth' })}}
+            onClick={() => {
+              setPageIndex(pageIndex - 1)
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
           >
             Previous
           </button>
@@ -69,7 +71,10 @@ const Catgories = () => {
         {data && data.length === 9 && (
           <button
             className="rounded-full bg-zinc-800 py-2 px-4 font-bold text-zinc-200 transition-all duration-300 hover:scale-105 active:scale-90 dark:bg-zinc-200 dark:text-zinc-800"
-            onClick={() => {setPageIndex(pageIndex + 1); window.scrollTo({ top: 0, behavior: 'smooth' })}}
+            onClick={() => {
+              setPageIndex(pageIndex + 1)
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
           >
             Next
           </button>
