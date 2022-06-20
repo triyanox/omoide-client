@@ -5,8 +5,9 @@ import { BiCategoryAlt } from 'react-icons/bi'
 import { RiSettings3Fill, RiEditCircleLine, RiSearchFill } from 'react-icons/ri'
 const Toolbar = () => {
   const { name } = useUser()
+
   return (
-    <section className="mt-16 flex w-full flex-row items-center py-4 px-12 md:px-24 xl:px-8">
+    <section className="mt-4 flex w-full flex-row items-center py-4 px-12 md:px-24 xl:px-8">
       <div
         className=" flex h-16 w-full items-center justify-between   rounded-xl   py-4 md:mx-0 
 md:px-12"
