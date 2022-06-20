@@ -1,49 +1,55 @@
-import Link from 'next/link'
+import { motion, useAnimation } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import main from '../assets/hero-light.svg'
+import { useEffect } from 'react'
 import Image from 'next/image'
-import light from '../assets/hero-light.svg'
-import dark from '../assets/hero-dark.svg'
-import { Button } from './Buttons'
+import Headline from './HeroHeadline'
 
 const Hero = () => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView()
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible')
+    }
+  }, [controls, inView])
   return (
-    <section className="mt-28 mb-20 flex w-full flex-col-reverse items-center justify-center gap-y-8 px-10 md:px-24 lg:mt-4 lg:h-screen lg:flex-row xl:px-20">
-      <div className="flex w-full flex-col items-start justify-center gap-y-2 text-black dark:text-white">
-        <h1 className="text-4xl font-semibold text-black dark:text-white">
-          Omoide
-        </h1>
-        <h2 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-gray-200">
-          A memory is a treazure
-        </h2>
-        <p className="mb-8 text-xl font-normal text-gray-600 dark:text-gray-400">
-          The best place to share your memories and experiences with the world
-          and inspire others.
-        </p>
-        <div className="flex w-full flex-row items-center justify-start gap-8">
-          <Link href="/signup" passHref>
-            <a className="w-full">
-              <Button text="Write a memory" />
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="z-10 flex w-full flex-col items-center justify-center p-2 dark:z-0 dark:hidden">
-        <Image
-          src={light}
-          width={512}
-          height={512}
-          alt="Omoide Light"
-          quality={100}
-        />
-      </div>
-      <div className="z-0 hidden flex-col items-center justify-center p-2 dark:z-10 dark:flex dark:w-full">
-        <Image
-          src={dark}
-          width={512}
-          height={512}
-          alt="Omoide Dark"
-          quality={100}
-        />
-      </div>
+    <section className="flex w-full flex-col-reverse items-center justify-center gap-8 px-6 pt-8 sm:px-8 md:flex-row md:px-12">
+      <Headline />
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: {
+            translateY: 0,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: 'bottom',
+            transition: {
+              duration: 0.5,
+              dump: 0.8,
+              stiffness: 100,
+              ease: 'easeInOut',
+            },
+          },
+          hidden: {
+            translateY: 100,
+            scale: 0.6,
+            opacity: 0.2,
+            transformOrigin: 'bottom',
+            transition: {
+              duration: 0.5,
+              dump: 0.8,
+              stiffness: 100,
+              ease: 'easeInOut',
+            },
+          },
+        }}
+        className="hidden w-full items-center justify-center lg:flex"
+      >
+        <Image src={main} alt="dark" width={500} height={500} />
+      </motion.div>
     </section>
   )
 }
